@@ -1,0 +1,41 @@
+.add-user form {
+    margin: 0.5rem auto;
+    padding: 1rem;
+    width: 100%;
+}
+
+.add-user label {
+    display: block;
+    text-align: left;
+    font-size: large;
+    font-style: normal;
+    font-weight: bold;
+    padding:3px;
+    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.add-user input {
+    display:block;
+    height: 35px;
+    font: inherit;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 50rem;
+    max-width: 100%;
+    margin-bottom: 5px;
+    margin-left: 0.5rem;
+}
+
+.add-user input:focus {
+    outline: none;
+    border-color: #4f005f;
+}
+
+.add-user button {
+   text-align: center;
+    width: 7rem;
+    padding: 1rem;
+    margin: 1rem;
+}
