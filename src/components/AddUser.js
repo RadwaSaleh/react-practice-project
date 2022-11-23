@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import './AddUser.css';
 import './UI/Card';
 import Card from "./UI/Card";
@@ -8,22 +8,23 @@ import "./UI/Button.css"
 const AddUser = () => {
     const [userName, setUserName] = useState('')
     const [userAge, setUserAge] = useState('');
-    const userNameInputRef = useRef(null);
-    const userAgeInputRef = useRef(null)
 
     const addUserHandler = (event) => {
         event.preventDefault();
-        userNameInputRef.current.value = '';
-        userAgeInputRef.current.value = '';
+        if(userName.trim() && userAge >= 1) {
+            console.log(userName.trim());
+            console.log(userAge);
+        }
+        setUserName('');
+        setUserAge('');
     }
 
     const userNameChangeHandler = (event) => {
-        console.log(event.target.value);
-
+        setUserName(event.target.value.trim());
     }
 
     const userAgeChangeHandler = (event) => {
-        console.log(event.target.value);
+        setUserAge(event.target.value);
     }
 
     return (
@@ -31,11 +32,11 @@ const AddUser = () => {
             <form onSubmit={addUserHandler}>
                 <div>
                     <label>Username</label>
-                    <input type="text" onChange={userAgeChangeHandler} ref={userNameInputRef}/>
+                    <input type="text" value={userName} onChange={userNameChangeHandler}/>
                 </div>
                 <div>
-                    <label>Age</label>
-                    <input type="number" onChange={userAgeChangeHandler} ref={userAgeInputRef}/>
+                    <label>Age (Years)</label>
+                    <input type="number" min="1" value={userAge} onChange={userAgeChangeHandler}/>
                 </div>
                 <Button type="submit" className="button">Add User</Button>
             </form>
