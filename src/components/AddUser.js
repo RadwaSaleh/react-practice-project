@@ -5,15 +5,16 @@ import Card from "./UI/Card";
 import Button from "./UI/Button";
 import "./UI/Button.css"
 
-const AddUser = () => {
+const AddUser = (props) => {
     const [userName, setUserName] = useState('')
     const [userAge, setUserAge] = useState('');
 
     const addUserHandler = (event) => {
         event.preventDefault();
-        if(userName.trim() && userAge >= 1) {
+        if(userName.trim() && userAge.trim() && userAge >= 1) {
             console.log(userName.trim());
             console.log(userAge);
+            props.getUserInfo(userName.trim(), userAge.trim());
         }
         setUserName('');
         setUserAge('');

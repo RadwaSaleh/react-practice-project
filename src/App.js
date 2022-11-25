@@ -1,10 +1,20 @@
-import React, {Fragment} from 'react';
-import AddUser from './components/AddUser.js'
+import React, {Fragment, useState} from 'react';
+import AddUser from './components/AddUser';
+import UsersList from './components/UsersList';
 
-function App() {
+function App(props) {
+    const [user, setUser] = useState();
+    let userObj
+    const getUserInfo = (name, age) => {
+        userObj = {name: name, age: age};
+        console.log(userObj);
+        setUser(userObj);
+    }
+    
   return (
     <Fragment>
-        <AddUser/>
+        <AddUser getUserInfo={getUserInfo}/>
+        <UsersList user={user}/>
     </Fragment>
   );
 }
