@@ -1,12 +1,14 @@
+import React from 'react';
 import "./UsersList.css";
+import Card from './UI/Card';
 
 const UsersList = (props) => {
     return (
-        <div className="users">
+        <Card className="users">
             <ul>
-                <li></li>
+                {props.usersList.map((user) => <li>{user.name} {user.age}</li>)}
             </ul>
-        </div>
+        </Card>
     )
 }
 

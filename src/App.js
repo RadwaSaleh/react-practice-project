@@ -3,18 +3,20 @@ import AddUser from './components/AddUser';
 import UsersList from './components/UsersList';
 
 function App(props) {
-    const [user, setUser] = useState();
-    let userObj
-    const getUserInfo = (name, age) => {
-        userObj = {name: name, age: age};
-        console.log(userObj);
-        setUser(userObj);
+    const [usersList, setUsersList] = useState([]);
+    let list = [];
+    let userObj;
+    const addUserHandler = (name, age) => {
+        console.log(name + ' ' + age);
+        setUsersList((prevState) => {
+            return [...prevState, {name: name, age: age}];
+        });
     }
-    
+
   return (
     <Fragment>
-        <AddUser getUserInfo={getUserInfo}/>
-        <UsersList user={user}/>
+        <AddUser onAddUser={addUserHandler}/>
+        <UsersList usersList={usersList} />
     </Fragment>
   );
 }
