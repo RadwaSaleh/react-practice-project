@@ -9,11 +9,15 @@ import ErrorModal from "../components/UI/ErrorModal";
 const AddUser = (props) => {
     const [userName, setUserName] = useState('')
     const [userAge, setUserAge] = useState('');
+    const [isErrorModalDisplayed, setIsErrorModalDisplayed] = useState(false)
 
     const addUserHandler = (event) => {
         event.preventDefault();
         if(userName.trim() && userAge.trim() && userAge >= 1) {
             props.onAddUser(userName, userAge);
+        }
+        else{
+            setIsErrorModalDisplayed(true);
         }
         setUserName('');
         setUserAge('');
@@ -27,9 +31,13 @@ const AddUser = (props) => {
         setUserAge(event.target.value.trim());
     }
 
+    const closeHandler = () => {
+        setIsErrorModalDisplayed(false);
+    }
+
     return (
         <Fragment>
-            <ErrorModal/>
+            {isErrorModalDisplayed? <ErrorModal/> : ''}
             <Card className="add-user">
                 <form onSubmit={addUserHandler}>
                     <div>
@@ -38,7 +46,7 @@ const AddUser = (props) => {
                     </div>
                     <div>
                         <label>Age (Years)</label>
-                        <input type="number" min="1" value={userAge} onChange={userAgeChangeHandler}/>
+                        <input type="number" value={userAge} onChange={userAgeChangeHandler}/>
                     </div>
                     <Button type="submit" className="button">Add User</Button>
                 </form>
