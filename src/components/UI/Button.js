@@ -1,7 +1,7 @@
 import React from 'react';
 const Button = (props) => {
     return (
-        <button type={props.type || 'button'} className={props.className}>{props.children}</button>
+        <button className={props.className} type={props.type || 'button'} onClick={props.onClick} >{props.children}</button>
     )
 }
 

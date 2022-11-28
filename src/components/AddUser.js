@@ -31,13 +31,13 @@ const AddUser = (props) => {
         setUserAge(event.target.value.trim());
     }
 
-    const closeHandler = () => {
+    const errorHandler = () => {
         setIsErrorModalDisplayed(false);
     }
 
     return (
         <Fragment>
-            {isErrorModalDisplayed? <ErrorModal/> : ''}
+            {isErrorModalDisplayed && <ErrorModal title="Error" message="Invalid username and/or age!" onConfirm={errorHandler}/>}
             <Card className="add-user">
                 <form onSubmit={addUserHandler}>
                     <div>
